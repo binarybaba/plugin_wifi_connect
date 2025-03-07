@@ -324,7 +324,7 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
     this.networkCallback = object : ConnectivityManager.NetworkCallback() {
       override fun onAvailable(network: Network) {
         super.onAvailable(network)
-        connectivityManager.setProcessDefaultNetwork(network)
+        connectivityManager.bindProcessToNetwork(network)
         result.success(true)
         // cannot unregister callback here since it would disconnect form the network
       }
@@ -347,7 +347,7 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
     }
     
     connectivityManager.unregisterNetworkCallback(this.networkCallback!!)
-    connectivityManager.setProcessDefaultNetwork(null)
+    connectivityManager.bindProcessToNetwork(null)
     this.networkCallback = null
 
     return true
