@@ -353,6 +353,7 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
     return true
   }
 
+
   @SuppressLint("MissingPermission")
   @Suppress("DEPRECATION")
   fun disconnect(@NonNull result: Result){
