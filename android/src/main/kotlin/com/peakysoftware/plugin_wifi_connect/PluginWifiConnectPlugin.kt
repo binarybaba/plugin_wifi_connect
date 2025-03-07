@@ -318,14 +318,13 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
     }
     val request = NetworkRequest.Builder()
             .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-            .removeCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
             .setNetworkSpecifier(specifier)
             .build()
 
     this.networkCallback = object : ConnectivityManager.NetworkCallback() {
       override fun onAvailable(network: Network) {
         super.onAvailable(network)
-        connectivityManager.bindProcessToNetwork(network)
+        connectivityManager.setProcessDefaultNetwork(network)
         result.success(true)
         // cannot unregister callback here since it would disconnect form the network
       }
@@ -348,7 +347,7 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
     }
     
     connectivityManager.unregisterNetworkCallback(this.networkCallback!!)
-    connectivityManager.bindProcessToNetwork(null)
+    connectivityManager.setProcessDefaultNetwork(null)
     this.networkCallback = null
 
     return true
