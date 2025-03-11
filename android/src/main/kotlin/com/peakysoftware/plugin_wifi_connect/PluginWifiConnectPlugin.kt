@@ -318,7 +318,6 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
     }
     val request = NetworkRequest.Builder()
             .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-            .removeCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
             .setNetworkSpecifier(specifier)
             .build()
 
@@ -353,6 +352,7 @@ class PluginWifiConnectPlugin() : FlutterPlugin, MethodCallHandler {
 
     return true
   }
+
 
   @SuppressLint("MissingPermission")
   @Suppress("DEPRECATION")

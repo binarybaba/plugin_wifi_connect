@@ -2,14 +2,14 @@ group 'com.peakysoftware.plugin_wifi_connect'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '2.1.10'
+    ext.kotlin_version = '1.9.24'
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.8.1'
+        classpath 'com.android.tools.build:gradle:8.4.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -25,7 +25,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion flutter.compileSdkVersion
+    namespace 'com.peakysoftware.plugin_wifi_connect'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -45,6 +46,6 @@ android {
     }
 }
 
-/*dependencies {
+dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}*/
+}
